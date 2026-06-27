@@ -41,6 +41,10 @@ class Router
 
     public function dispatch(string $uri, string $method): void
     {
+        if ($method === 'HEAD') {
+            $method = 'GET';
+        }
+
         $uri = parse_url($uri, PHP_URL_PATH) ?: '/';
         // Normalize Windows/Apache encoded paths (e.g. %20 in folder names)
         $uri = rawurldecode($uri);
@@ -141,6 +145,15 @@ class Router
     private function getBasePath(): string
     {
         $script = $_SERVER['SCRIPT_NAME'] ?? '';
-        return rtrim(str_replace('\\', '/', dirname($script)), '/');
+        $base = rtrim(str_replace('\\', '/', dirname($script)), '/');
+        $requestPath = rawurldecode((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
+        $projectFolder = basename(BASE_PATH);
+        $projectNeedle = '/' . $projectFolder;
+
+        if ($projectFolder !== '' && str_contains($requestPath, $projectNeedle)) {
+            return substr($requestPath, 0, strpos($requestPath, $projectNeedle) + strlen($projectNeedle));
+        }
+
+        return $base;
     }
 }

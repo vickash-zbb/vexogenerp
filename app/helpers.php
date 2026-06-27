@@ -14,6 +14,15 @@ if (!function_exists('detect_app_url')) {
             || (($_SERVER['SERVER_PORT'] ?? '') === '443');
         $scheme = $https ? 'https' : 'http';
         $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $requestPath = rawurldecode((string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH));
+        $projectFolder = basename(BASE_PATH);
+        $projectNeedle = '/' . $projectFolder;
+        if ($projectFolder !== '' && str_contains($requestPath, $projectNeedle)) {
+            $basePath = substr($requestPath, 0, strpos($requestPath, $projectNeedle) + strlen($projectNeedle));
+            $basePath = str_replace(' ', '%20', $basePath);
+            return $scheme . '://' . $host . $basePath;
+        }
+
         $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
         $dir = rtrim(dirname($script), '/');
         if (str_ends_with($dir, '/public')) {
@@ -194,7 +203,7 @@ if (!function_exists('status_badge_class')) {
 }
 
 if (!function_exists('json_response')) {
-    function json_response(array $data, int $status = 200): never
+    function json_response(array $data, int $status = 200): void
     {
         http_response_code($status);
         header('Content-Type: application/json; charset=utf-8');
@@ -204,7 +213,7 @@ if (!function_exists('json_response')) {
 }
 
 if (!function_exists('redirect')) {
-    function redirect(string $path): never
+    function redirect(string $path): void
     {
         header('Location: ' . url($path));
         exit;

@@ -11,7 +11,7 @@ abstract class Controller
         View::render($view, $data, $layout);
     }
 
-    protected function json(array $data, int $status = 200): never
+    protected function json(array $data, int $status = 200): void
     {
         json_response($data, $status);
     }

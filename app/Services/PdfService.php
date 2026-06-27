@@ -16,6 +16,9 @@ class PdfService
         ob_start();
         require APP_PATH . '/Views/documents/' . $view . '.php';
         $html = ob_get_clean();
+        if (!extension_loaded('gd')) {
+            $html = (string) preg_replace('/<img\b[^>]*>/i', '', $html);
+        }
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);

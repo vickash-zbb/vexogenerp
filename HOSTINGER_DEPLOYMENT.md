@@ -46,7 +46,18 @@ This project requires PHP 8.0+. PHP 7.x will show HTTP 500.
 
 ## 3. Create `.env`
 
-Copy `.env.example` to `.env` on Hostinger and update:
+For local XAMPP, use `.env.example` / `.env`:
+
+```env
+APP_URL=
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=vexogen_crm
+DB_USER=root
+DB_PASS=
+```
+
+For Hostinger, copy `.env.hostinger.example` to `.env` on the server and update the real passwords:
 
 ```env
 APP_URL=https://erp.vexogen.in
@@ -57,7 +68,7 @@ DB_USER=u899224075_erpvexogen
 DB_PASS=your_hostinger_database_password
 ```
 
-Use your real Hostinger database name and user. Hostinger database names often start with something like `u123456789_`.
+Use your real Hostinger database password. Hostinger database names and users often start with something like `u123456789_`.
 
 ## 4. Import Database
 
@@ -109,6 +120,13 @@ If you see **HTTP ERROR 500**:
 4. Upload `vendor/` or run `composer install` on the server.
 5. Open `storage/logs/php-errors.log` in Hostinger File Manager for the exact error.
 6. Run `install.php` once if tables are missing.
+7. Open `https://erp.vexogen.in/server-check.php` during setup and confirm the checks are OK.
+8. Delete `public/server-check.php` after the site is working.
+
+For local XAMPP, open:
+
+- `http://localhost/vexogen%20crm/server-check.php`
+- `http://localhost/vexogen%20crm/login`
 
 ## 9. Cron Backup
 

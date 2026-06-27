@@ -5,11 +5,11 @@ INSERT INTO company_settings (company_name, tagline, email, phone, address, city
 ('Vexogen', 'Digital Agency & Creative Studio', 'hello@vexogen.com', '+91 98400 00000', 'Salem, Tamil Nadu 636001, India', 'Salem', 'Tamil Nadu', '636001', '33AABCV1234R1Z5', 'www.vexogen.com', 'HDFC Bank', '50200123456789', 'HDFC0001234', 'Payment due within 7 days. Late payments attract 2% monthly interest.', 'Quotation valid for 15 days from issue date.');
 
 INSERT INTO users (name, email, password, role, avatar, phone) VALUES
-('Admin User', 'admin@vexogen.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'AK', '+91 98400 00001'),
-('Sowmya Krishnan', 'accounts@vexogen.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'accounts', 'SK', '+91 98400 00002'),
-('Rajan Kumar', 'rajan@vexogen.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'designer', 'RK', '+91 98400 00003');
+('Admin User', 'admin@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'admin', 'AK', '+91 98400 00001'),
+('Sowmya Krishnan', 'accounts@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'accounts', 'SK', '+91 98400 00002'),
+('Rajan Kumar', 'rajan@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'designer', 'RK', '+91 98400 00003');
 
--- password for all: password (bcrypt hash above) - we'll use admin123 in install
+-- password for seeded users: admin123
 
 INSERT INTO employees (user_id, employee_code, name, email, phone, designation, department, skills, salary, join_date, status) VALUES
 (3, 'EMP-001', 'Rajan Kumar', 'rajan@vexogen.com', '+91 98400 00003', 'Senior Designer', 'Creative', '["Branding","Packaging"]', 45000, '2022-04-01', 'active'),
