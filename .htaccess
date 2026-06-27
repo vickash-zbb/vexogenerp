@@ -9,12 +9,6 @@ RewriteRule ^(install|backup)\.php$ - [L]
 
 # Serve real public assets when the document root is the project root.
 RewriteCond %{REQUEST_URI} !/public/
-RewriteRule ^server-check\.php$ public/server-check.php [L]
-RewriteCond %{REQUEST_URI} !/public/
-RewriteRule ^diagnose\.php$ public/diagnose.php [L]
-RewriteCond %{REQUEST_URI} !/public/
-RewriteRule ^setenv\.php$ public/setenv.php [L]
-RewriteCond %{REQUEST_URI} !/public/
 RewriteRule ^(.+\.(?:css|js|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|map))$ public/$1 [L]
 
 # Send application routes directly to the public entry point.
