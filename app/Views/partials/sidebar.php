@@ -1,9 +1,9 @@
 <?php
 $user = \App\Core\Auth::user();
 $initials = strtoupper(substr($user['name'] ?? 'A', 0, 1) . substr(strstr($user['name'] ?? 'Admin', ' ') ?: '', 1, 1));
-$taskCount = \App\Models\Task::countPending();
-$clientCount = \App\Models\Client::count();
-$projectStats = \App\Models\Project::stats();
+$taskCount = db_safe(fn () => \App\Models\Task::countPending(), 0);
+$clientCount = db_safe(fn () => \App\Models\Client::count(), 0);
+$projectStats = db_safe(fn () => \App\Models\Project::stats(), ['active' => 0]);
 $nav = [
     ['id' => 'dashboard', 'label' => 'Dashboard', 'icon' => 'ti-layout-dashboard', 'url' => url(), 'badge' => null],
     ['id' => 'clients', 'label' => 'Clients', 'icon' => 'ti-building-store', 'url' => url('clients'), 'badge' => $clientCount],

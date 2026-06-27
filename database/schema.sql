@@ -1,8 +1,6 @@
 -- Vexogen Agency ERP/CRM Database Schema
 -- MySQL 8.0+
-
-CREATE DATABASE IF NOT EXISTS vexogen_crm CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE vexogen_crm;
+-- Import this file after selecting your existing database in phpMyAdmin.
 
 SET FOREIGN_KEY_CHECKS = 0;
 

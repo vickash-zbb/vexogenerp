@@ -18,7 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'insta
     try {
         $cfg = require CONFIG_PATH . '/database.php';
         $pdo = new PDO(
-            sprintf('mysql:host=%s;port=%s;charset=%s', $cfg['host'], $cfg['port'], $cfg['charset']),
+            sprintf(
+                'mysql:host=%s;port=%s;dbname=%s;charset=%s',
+                $cfg['host'],
+                $cfg['port'],
+                $cfg['database'],
+                $cfg['charset']
+            ),
             $cfg['username'],
             $cfg['password'],
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
@@ -26,9 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'insta
 
         $schema = file_get_contents(__DIR__ . '/database/schema.sql');
         foreach (array_filter(array_map('trim', explode(';', $schema))) as $sql) {
-            if ($sql !== '') {
-                $pdo->exec($sql);
+            if ($sql === '') {
+                continue;
             }
+            $upper = strtoupper($sql);
+            if (str_starts_with($upper, 'CREATE DATABASE') || str_starts_with($upper, 'USE ')) {
+                continue;
+            }
+            $pdo->exec($sql);
         }
 
         // Set admin password to admin123
@@ -86,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'insta
 <div class="box">
   <h1>Vexogen CRM Installer</h1>
   <?php if ($error): ?><div class="error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
-  <?php if ($message): ?><div class="success"><?= htmlspecialchars($message) ?></div><p><a href="public/">Go to Application →</a></p><?php endif; ?>
+  <?php if ($message): ?><div class="success"><?= htmlspecialchars($message) ?></div><p><a href="<?= htmlspecialchars(detect_app_url()) ?>">Go to Application →</a></p><?php endif; ?>
   <?php if ($step !== 'done'): ?>
-  <p>This will create the <strong>vexogen_crm</strong> database, tables, and sample data for Vexogen agency operations.</p>
-  <p>Requirements: PHP 8+, MySQL running (XAMPP), database credentials in <code>config/database.php</code></p>
+  <p>This will create tables and sample data in your Hostinger MySQL database using credentials from <code>.env</code>.</p>
+  <p>Requirements: PHP 8.0+, MySQL database created in hPanel, and <code>.env</code> configured with <code>DB_HOST</code>, <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASS</code>.</p>
   <form method="post">
     <input type="hidden" name="action" value="install">
     <button type="submit" class="btn">Install Database</button>

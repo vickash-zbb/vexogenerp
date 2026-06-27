@@ -1,8 +1,8 @@
 <?php
-$clients = \App\Models\Client::dropdown();
-$employees = \App\Models\Employee::dropdown();
-$projectsLookup = \App\Models\Project::all([], 1, 200);
-$invoicesLookup = \App\Models\Invoice::all(1, 200);
+$clients = db_safe(fn () => \App\Models\Client::dropdown(), []);
+$employees = db_safe(fn () => \App\Models\Employee::dropdown(), []);
+$projectsLookup = db_safe(fn () => \App\Models\Project::all([], 1, 200), []);
+$invoicesLookup = db_safe(fn () => \App\Models\Invoice::all(1, 200), []);
 ?>
 <div class="modal-overlay" id="clientModal">
   <div class="modal">

@@ -1,6 +1,10 @@
 RewriteEngine On
+RewriteBase /
 
 RewriteRule (^|/)\. - [F,L]
+
+# One-time installer when document root is the public folder.
+RewriteRule ^install\.php$ - [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -1,5 +1,5 @@
 -- Vexogen CRM Seed Data
-USE vexogen_crm;
+-- Import this file after selecting your existing database in phpMyAdmin.
 
 INSERT INTO company_settings (company_name, tagline, email, phone, address, city, state, pincode, gst_number, website, bank_name, bank_account, bank_ifsc, invoice_terms, quotation_terms) VALUES
 ('Vexogen', 'Digital Agency & Creative Studio', 'hello@vexogen.com', '+91 98400 00000', 'Salem, Tamil Nadu 636001, India', 'Salem', 'Tamil Nadu', '636001', '33AABCV1234R1Z5', 'www.vexogen.com', 'HDFC Bank', '50200123456789', 'HDFC0001234', 'Payment due within 7 days. Late payments attract 2% monthly interest.', 'Quotation valid for 15 days from issue date.');

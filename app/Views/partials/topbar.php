@@ -2,7 +2,7 @@
 $user = \App\Core\Auth::user();
 $parts = explode(' ', $user['name'] ?? 'Admin');
 $initials = strtoupper(substr($parts[0], 0, 1) . (isset($parts[1]) ? substr($parts[1], 0, 1) : ''));
-$unread = \App\Models\Dashboard::unreadCount();
+$unread = db_safe(fn () => \App\Models\Dashboard::unreadCount(), 0);
 ?>
 <div class="topbar">
   <div class="topbar-left">

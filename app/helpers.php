@@ -2,6 +2,30 @@
 
 declare(strict_types=1);
 
+if (!function_exists('detect_app_url')) {
+    function detect_app_url(): string
+    {
+        if (php_sapi_name() === 'cli') {
+            return rtrim(getenv('APP_URL') ?: 'http://localhost', '/');
+        }
+
+        $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')
+            || (($_SERVER['SERVER_PORT'] ?? '') === '443');
+        $scheme = $https ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+        $dir = rtrim(dirname($script), '/');
+        if (str_ends_with($dir, '/public')) {
+            $dir = substr($dir, 0, -7);
+        }
+        if ($dir === '' || $dir === '/') {
+            return $scheme . '://' . $host;
+        }
+        return $scheme . '://' . $host . $dir;
+    }
+}
+
 if (!function_exists('config')) {
     function config(string $key, mixed $default = null): mixed
     {
@@ -29,9 +53,24 @@ if (!function_exists('e')) {
 if (!function_exists('url')) {
     function url(string $path = ''): string
     {
-        $base = rtrim(config('app.url'), '/');
+        $configured = rtrim((string) config('app.url'), '/');
+        $localDefaults = ['http://localhost/vexogen%20crm/public', 'http://localhost/vexogen crm/public'];
+        $base = in_array($configured, $localDefaults, true) || $configured === ''
+            ? detect_app_url()
+            : $configured;
         $path = ltrim($path, '/');
         return $path === '' ? $base : $base . '/' . $path;
+    }
+}
+
+if (!function_exists('db_safe')) {
+    function db_safe(callable $callback, mixed $default = null): mixed
+    {
+        try {
+            return $callback();
+        } catch (Throwable $e) {
+            return $default;
+        }
     }
 }
 

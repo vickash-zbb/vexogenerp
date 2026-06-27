@@ -1,5 +1,5 @@
 -- Upgrade script for existing installations
-USE vexogen_crm;
+-- Import this file after selecting your existing database in phpMyAdmin.
 
 ALTER TABLE company_settings
     ADD COLUMN IF NOT EXISTS smtp_host VARCHAR(200) NULL AFTER upi_id,
