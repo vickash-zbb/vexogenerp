@@ -2,11 +2,22 @@
 
 declare(strict_types=1);
 
+if (!function_exists('env')) {
+    function env(string $key, mixed $default = null): mixed
+    {
+        $val = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
+        if ($val === false || $val === null) {
+            return $default;
+        }
+        return $val;
+    }
+}
+
 if (!function_exists('detect_app_url')) {
     function detect_app_url(): string
     {
         if (php_sapi_name() === 'cli') {
-            return rtrim(getenv('APP_URL') ?: 'http://localhost', '/');
+            return rtrim(env('APP_URL') ?: 'http://localhost', '/');
         }
 
         $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')

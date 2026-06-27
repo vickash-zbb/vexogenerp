@@ -31,16 +31,17 @@ if (!$bootstrapError && class_exists(\App\Core\Database::class)) {
     try {
         $pdo = \App\Core\Database::connection();
         $dbStatus = (bool) $pdo->query('SELECT 1')->fetchColumn();
-        $dbDetail = 'Connected to ' . (getenv('DB_NAME') ?: '(no DB_NAME)');
+        $dbNameVal = (function_exists('env') ? env('DB_NAME') : null) ?: $_ENV['DB_NAME'] ?? $_SERVER['DB_NAME'] ?? getenv('DB_NAME') ?: '(no DB_NAME)';
+        $dbDetail = 'Connected to ' . $dbNameVal;
     } catch (Throwable $e) {
         $dbDetail = $e->getMessage();
     }
 }
 
-$appUrl = getenv('APP_URL') ?: 'auto-detect';
-$dbHost = getenv('DB_HOST') ?: '(not set)';
-$dbName = getenv('DB_NAME') ?: '(not set)';
-$dbUser = getenv('DB_USER') ?: '(not set)';
+$appUrl = (function_exists('env') ? env('APP_URL') : null) ?: $_ENV['APP_URL'] ?? $_SERVER['APP_URL'] ?? getenv('APP_URL') ?: 'auto-detect';
+$dbHost = (function_exists('env') ? env('DB_HOST') : null) ?: $_ENV['DB_HOST'] ?? $_SERVER['DB_HOST'] ?? getenv('DB_HOST') ?: '(not set)';
+$dbName = (function_exists('env') ? env('DB_NAME') : null) ?: $_ENV['DB_NAME'] ?? $_SERVER['DB_NAME'] ?? getenv('DB_NAME') ?: '(not set)';
+$dbUser = (function_exists('env') ? env('DB_USER') : null) ?: $_ENV['DB_USER'] ?? $_SERVER['DB_USER'] ?? getenv('DB_USER') ?: '(not set)';
 ?>
 <!DOCTYPE html>
 <html lang="en">

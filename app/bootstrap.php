@@ -43,8 +43,8 @@ if (is_file($envFile) && is_readable($envFile)) {
         $value = trim($value);
         $value = trim($value, "\"'");
 
-        if ($key !== '' && getenv($key) === false) {
-            putenv($key . '=' . $value);
+        if ($key !== '' && getenv($key) === false && !isset($_ENV[$key]) && !isset($_SERVER[$key])) {
+            @putenv($key . '=' . $value);
             $_ENV[$key] = $value;
             $_SERVER[$key] = $value;
         }

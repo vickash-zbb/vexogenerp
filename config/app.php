@@ -3,7 +3,7 @@
 return [
     'name'       => 'Vexogen',
     'tagline'    => 'Agency ERP',
-    'url'        => getenv('APP_URL') ?: '',
+    'url'        => env('APP_URL', ''),
     'timezone'   => 'Asia/Kolkata',
     'currency'   => 'INR',
     'currency_symbol' => '₹',
