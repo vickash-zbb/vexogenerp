@@ -45,8 +45,8 @@ $router->get('/reports', [ReportController::class, 'index'], 'reports');
 $router->get('/settings', [SettingsController::class, 'index'], 'settings');
 
 // PDF documents
-$router->get('/documents/invoice/{id}/pdf', [DocumentController::class, 'invoicePdf'], 'invoices');
-$router->get('/documents/quotation/{id}/pdf', [DocumentController::class, 'quotationPdf'], 'quotations');
+$router->get('/documents/invoice/{id}/pdf', [DocumentController::class, 'invoicePdf'], 'public');
+$router->get('/documents/quotation/{id}/pdf', [DocumentController::class, 'quotationPdf'], 'public');
 
 // API
 $router->api('GET', '/api/search', [ApiController::class, 'search'], 'clients');
