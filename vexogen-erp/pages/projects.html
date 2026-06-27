@@ -1,0 +1,93 @@
+<!-- pages/projects.html -->
+<div id="page-projects" class="page">
+  <div class="section-header" style="margin-bottom:20px">
+    <div class="tabs" style="margin:0;border:none">
+      <div class="tab active" onclick="switchTab(this,'kanban-view')">Kanban</div>
+      <div class="tab" onclick="switchTab(this,'list-view')">List</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <select class="form-control" style="width:140px;padding:7px 11px"><option>All Services</option><option>Branding</option><option>Web Dev</option><option>Photography</option></select>
+      <button class="btn btn-primary" onclick="openModal('projectModal')"><i class="ti ti-plus"></i> New Project</button>
+    </div>
+  </div>
+
+  <!-- Kanban View -->
+  <div id="kanban-view">
+    <div class="kanban-board">
+      <div class="kanban-col">
+        <div class="kanban-header"><span class="kanban-title">Lead</span><span class="kanban-count">2</span></div>
+        <div class="kanban-body">
+          <div class="kanban-card">
+            <div class="kanban-card-title">Mobile App — FinTrack</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">Ganesh Iyer · App Development</div>
+            <div class="kanban-card-meta"><span class="badge badge-gray" style="font-size:10.5px">Est. ₹2.5L</span><div class="avatar-stack"><div class="avatar-xs" style="background:#6D28D9">AM</div></div></div>
+          </div>
+          <div class="kanban-card">
+            <div class="kanban-card-title">SEO Campaign — Retail Co</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">Preet Kaur · SEO</div>
+            <div class="kanban-card-meta"><span class="badge badge-gray" style="font-size:10.5px">Est. ₹45K</span><div class="avatar-stack"><div class="avatar-xs" style="background:#16A34A">PS</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="kanban-col">
+        <div class="kanban-header"><span class="kanban-title">Design</span><span class="kanban-count">3</span></div>
+        <div class="kanban-body">
+          <div class="kanban-card" style="border-left:3px solid var(--primary)">
+            <div class="kanban-card-title">Brand Identity — Nexus</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">Nexus Brands · Branding</div>
+            <div style="margin-bottom:8px"><div class="progress"><div class="progress-fill" style="width:65%"></div></div><div style="font-size:10.5px;color:var(--text-muted);margin-top:3px">65% complete</div></div>
+            <div class="kanban-card-meta"><span class="badge badge-red" style="font-size:10.5px">High priority</span><div class="avatar-stack"><div class="avatar-xs">RK</div></div></div>
+          </div>
+          <div class="kanban-card">
+            <div class="kanban-card-title">Packaging — FreshMart</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">FreshMart Retail · Packaging</div>
+            <div style="margin-bottom:8px"><div class="progress"><div class="progress-fill orange" style="width:45%"></div></div><div style="font-size:10.5px;color:var(--text-muted);margin-top:3px">45% complete</div></div>
+            <div class="kanban-card-meta"><span class="badge badge-orange" style="font-size:10.5px">Medium</span><div class="avatar-stack"><div class="avatar-xs">RK</div><div class="avatar-xs" style="background:#6D28D9">AM</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="kanban-col">
+        <div class="kanban-header"><span class="kanban-title">Review</span><span class="kanban-count">2</span></div>
+        <div class="kanban-body">
+          <div class="kanban-card" style="border-left:3px solid var(--warning)">
+            <div class="kanban-card-title">E-commerce Website</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">Stellar Media · Web Dev</div>
+            <div style="margin-bottom:8px"><div class="progress"><div class="progress-fill orange" style="width:85%"></div></div><div style="font-size:10.5px;color:var(--text-muted);margin-top:3px">85% complete</div></div>
+            <div class="kanban-card-meta"><span class="badge badge-orange" style="font-size:10.5px">Due Dec 18</span><div class="avatar-stack"><div class="avatar-xs" style="background:#6D28D9">AM</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="kanban-col">
+        <div class="kanban-header"><span class="kanban-title">Completed</span><span class="kanban-count">4</span></div>
+        <div class="kanban-body">
+          <div class="kanban-card">
+            <div class="kanban-card-title">Product Video — Ola</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">Ola Organics · Video</div>
+            <div class="kanban-card-meta"><span class="badge badge-green" style="font-size:10.5px">Delivered</span><div class="avatar-stack"><div class="avatar-xs" style="background:#F59E0B">VN</div></div></div>
+          </div>
+          <div class="kanban-card">
+            <div class="kanban-card-title">Social Media Kit</div>
+            <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px">FreshMart · Design</div>
+            <div class="kanban-card-meta"><span class="badge badge-green" style="font-size:10.5px">Delivered</span><div class="avatar-stack"><div class="avatar-xs" style="background:#16A34A">PS</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- List View -->
+  <div id="list-view" style="display:none">
+    <div class="table-card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Project ID</th><th>Project Name</th><th>Client</th><th>Category</th><th>Assigned</th><th>Delivery</th><th>Value</th><th>Status</th><th>Progress</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--primary);font-weight:500">PRJ-2024-041</td><td style="font-weight:500">Brand Identity</td><td>Nexus Brands</td><td><span class="badge badge-blue">Branding</span></td><td><div class="avatar-stack"><div class="avatar-xs">RK</div></div></td><td>Dec 22</td><td style="font-weight:600">₹95,000</td><td><span class="badge badge-blue">Design</span></td><td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="width:70px"><div class="progress-fill" style="width:65%"></div></div><span style="font-size:11.5px;color:var(--text-muted)">65%</span></div></td></tr>
+            <tr><td style="color:var(--primary);font-weight:500">PRJ-2024-042</td><td style="font-weight:500">E-commerce Website</td><td>Stellar Media</td><td><span class="badge badge-purple">Web Dev</span></td><td><div class="avatar-stack"><div class="avatar-xs" style="background:#6D28D9">AM</div></div></td><td>Dec 18</td><td style="font-weight:600">₹1,80,000</td><td><span class="badge badge-orange">Review</span></td><td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="width:70px"><div class="progress-fill orange" style="width:85%"></div></div><span style="font-size:11.5px;color:var(--text-muted)">85%</span></div></td></tr>
+            <tr><td style="color:var(--primary);font-weight:500">PRJ-2024-043</td><td style="font-weight:500">Packaging Design</td><td>FreshMart</td><td><span class="badge badge-orange">Packaging</span></td><td><div class="avatar-stack"><div class="avatar-xs">RK</div><div class="avatar-xs" style="background:#6D28D9">AM</div></div></td><td>Dec 20</td><td style="font-weight:600">₹65,000</td><td><span class="badge badge-purple">Revision</span></td><td><div style="display:flex;align-items:center;gap:8px"><div class="progress" style="width:70px"><div class="progress-fill" style="width:45%"></div></div><span style="font-size:11.5px;color:var(--text-muted)">45%</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

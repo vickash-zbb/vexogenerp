@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Block direct access to private application files on shared hosting.
+RewriteRule ^(\.git|\.agents|\.codex|app|config|database|storage|vendor|vexogen-erp)(/|$) - [F,L]
+RewriteRule ^(\.env|composer\.(json|lock)|composer\.phar|README\.md)$ - [F,L]
+
+# Send all web requests to the public entry point.
+RewriteCond %{REQUEST_URI} !/public/
+RewriteRule ^(.*)$ public/$1 [L]

@@ -1,0 +1,27 @@
+<!-- pages/reports.html -->
+<div id="page-reports" class="page">
+  <div class="section-header" style="margin-bottom:24px">
+    <div style="display:flex;gap:8px">
+      <select class="form-control" style="width:130px;padding:7px 11px"><option>This Month</option><option>Last Month</option><option>This Year</option></select>
+    </div>
+    <button class="btn btn-outline"><i class="ti ti-download"></i> Export Report</button>
+  </div>
+  <div class="report-kpi">
+    <div class="kpi-card"><div class="kpi-val">₹38L</div><div class="kpi-label">Total Revenue (YTD)</div><div class="kpi-trend up" style="color:var(--success)"><i class="ti ti-trending-up"></i> +22% vs last year</div></div>
+    <div class="kpi-card"><div class="kpi-val">₹14.2L</div><div class="kpi-label">Total Expenses (YTD)</div><div class="kpi-trend" style="color:var(--text-muted)"><i class="ti ti-trending-up"></i> +8% vs last year</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:var(--success)">₹23.8L</div><div class="kpi-label">Net Profit (YTD)</div><div class="kpi-trend up" style="color:var(--success)"><i class="ti ti-trending-up"></i> 63% margin</div></div>
+    <div class="kpi-card"><div class="kpi-val">61</div><div class="kpi-label">Projects Completed</div><div class="kpi-trend up" style="color:var(--success)"><i class="ti ti-trending-up"></i> +18 vs last year</div></div>
+  </div>
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title">Monthly Revenue vs Expenses</div>
+      <div class="chart-sub">Full year overview</div>
+      <canvas id="reportChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Service-wise Revenue</div>
+      <div class="chart-sub">Revenue breakdown by service</div>
+      <canvas id="serviceChart" height="200"></canvas>
+    </div>
+  </div>
+</div>

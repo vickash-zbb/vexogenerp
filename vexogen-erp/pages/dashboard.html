@@ -1,0 +1,122 @@
+<!-- pages/dashboard.html -->
+<div id="page-dashboard" class="page active">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon blue"><i class="ti ti-building-store"></i></div>
+      <div class="stat-label">Total Clients</div>
+      <div class="stat-value">24</div>
+      <div class="stat-change up"><i class="ti ti-trending-up"></i> +3 this month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon blue"><i class="ti ti-briefcase"></i></div>
+      <div class="stat-label">Active Projects</div>
+      <div class="stat-value">11</div>
+      <div class="stat-change up"><i class="ti ti-trending-up"></i> 2 starting soon</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green"><i class="ti ti-circle-check"></i></div>
+      <div class="stat-label">Completed</div>
+      <div class="stat-value">38</div>
+      <div class="stat-change up"><i class="ti ti-trending-up"></i> +5 this month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon orange"><i class="ti ti-coin"></i></div>
+      <div class="stat-label">Revenue (Month)</div>
+      <div class="stat-value">₹3.8L</div>
+      <div class="stat-change up"><i class="ti ti-trending-up"></i> +12% vs last</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon red"><i class="ti ti-alert-triangle"></i></div>
+      <div class="stat-label">Pending Payments</div>
+      <div class="stat-value">₹1.2L</div>
+      <div class="stat-change down"><i class="ti ti-trending-down"></i> 4 overdue</div>
+    </div>
+  </div>
+
+  <div class="stats-grid" style="margin-bottom:24px">
+    <div class="stat-card"><div class="stat-label">Expenses (Month)</div><div class="stat-value" style="font-size:20px">₹1.4L</div><div class="stat-change down"><i class="ti ti-trending-up"></i> +8%</div></div>
+    <div class="stat-card"><div class="stat-label">Net Profit</div><div class="stat-value" style="font-size:20px;color:var(--success)">₹2.4L</div><div class="stat-change up"><i class="ti ti-trending-up"></i> 63% margin</div></div>
+    <div class="stat-card"><div class="stat-label">Cash in Hand</div><div class="stat-value" style="font-size:20px">₹5.6L</div><div class="stat-change up"><i class="ti ti-check"></i> Updated today</div></div>
+    <div class="stat-card"><div class="stat-label">Upcoming Deliveries</div><div class="stat-value" style="font-size:20px">6</div><div class="stat-change down"><i class="ti ti-clock"></i> 2 this week</div></div>
+    <div class="stat-card"><div class="stat-label">Lead Conversion</div><div class="stat-value" style="font-size:20px">68%</div><div class="stat-change up"><i class="ti ti-trending-up"></i> +5% vs last</div></div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <div class="chart-title">Revenue &amp; Expenses</div>
+      <div class="chart-sub">Monthly overview — 2024</div>
+      <canvas id="revenueChart" height="180"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Project Status</div>
+      <div class="chart-sub">Distribution across all projects</div>
+      <div style="display:flex;align-items:center;gap:20px;margin-top:8px">
+        <div style="position:relative;width:120px;height:120px;flex-shrink:0"><canvas id="statusChart" width="120" height="120"></canvas></div>
+        <div class="donut-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#0F62FE"></div><div class="legend-label">Active</div><div class="legend-val">11</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#16A34A"></div><div class="legend-label">Completed</div><div class="legend-val">38</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div><div class="legend-label">Review</div><div class="legend-val">5</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E2E8F0"></div><div class="legend-label">Lead</div><div class="legend-val">7</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent tables -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px">
+    <div class="table-card">
+      <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:14px;font-weight:600">Recent Projects</div>
+        <button class="btn btn-ghost btn-sm" onclick="navigate('projects',null)">View all <i class="ti ti-arrow-right"></i></button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Project</th><th>Client</th><th>Status</th><th>Progress</th></tr></thead>
+          <tbody>
+            <tr><td><div style="font-weight:500">Brand Identity</div><div style="font-size:11px;color:var(--text-muted)">PRJ-2024-041</div></td><td>Nexus Brands</td><td><span class="badge badge-blue">Design</span></td><td><div class="progress" style="width:80px"><div class="progress-fill" style="width:65%"></div></div></td></tr>
+            <tr><td><div style="font-weight:500">E-comm Website</div><div style="font-size:11px;color:var(--text-muted)">PRJ-2024-042</div></td><td>Stellar Media</td><td><span class="badge badge-orange">Review</span></td><td><div class="progress" style="width:80px"><div class="progress-fill orange" style="width:85%"></div></div></td></tr>
+            <tr><td><div style="font-weight:500">Packaging Design</div><div style="font-size:11px;color:var(--text-muted)">PRJ-2024-043</div></td><td>FreshMart</td><td><span class="badge badge-purple">Revision</span></td><td><div class="progress" style="width:80px"><div class="progress-fill" style="width:45%"></div></div></td></tr>
+            <tr><td><div style="font-weight:500">Product Video</div><div style="font-size:11px;color:var(--text-muted)">PRJ-2024-044</div></td><td>Ola Organics</td><td><span class="badge badge-green">Completed</span></td><td><div class="progress" style="width:80px"><div class="progress-fill green" style="width:100%"></div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="table-card">
+      <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:14px;font-weight:600">Pending Tasks</div>
+        <button class="btn btn-ghost btn-sm" onclick="navigate('tasks',null)">View all <i class="ti ti-arrow-right"></i></button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Task</th><th>Assignee</th><th>Priority</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:500">Logo variations v3</td><td><div class="avatar-stack"><div class="avatar-xs">RK</div></div></td><td><span class="badge badge-red">High</span></td><td style="color:var(--danger)">Today</td></tr>
+            <tr><td style="font-weight:500">Homepage wireframe</td><td><div class="avatar-stack"><div class="avatar-xs" style="background:#6D28D9">AM</div></div></td><td><span class="badge badge-orange">Medium</span></td><td>Tomorrow</td></tr>
+            <tr><td style="font-weight:500">Social media content</td><td><div class="avatar-stack"><div class="avatar-xs" style="background:#16A34A">PS</div></div></td><td><span class="badge badge-gray">Low</span></td><td>Dec 18</td></tr>
+            <tr><td style="font-weight:500">Product photos edit</td><td><div class="avatar-stack"><div class="avatar-xs" style="background:#F59E0B">VN</div></div></td><td><span class="badge badge-orange">Medium</span></td><td>Dec 20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent payments -->
+  <div class="table-card">
+    <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+      <div style="font-size:14px;font-weight:600">Recent Payments</div>
+      <button class="btn btn-outline btn-sm" onclick="openModal('paymentModal')"><i class="ti ti-plus"></i> Record Payment</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Invoice</th><th>Client</th><th>Amount</th><th>Method</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--primary);font-weight:500">INV-2024-089</td><td>Stellar Media</td><td style="font-weight:600">₹85,000</td><td><span class="badge badge-gray"><i class="ti ti-building-bank" style="font-size:11px"></i> NEFT</span></td><td>Dec 14, 2024</td><td><span class="badge badge-green badge-dot">Received</span></td></tr>
+          <tr><td style="color:var(--primary);font-weight:500">INV-2024-088</td><td>Nexus Brands</td><td style="font-weight:600">₹45,000</td><td><span class="badge badge-gray"><i class="ti ti-qrcode" style="font-size:11px"></i> UPI</span></td><td>Dec 12, 2024</td><td><span class="badge badge-red badge-dot">Overdue</span></td></tr>
+          <tr><td style="color:var(--primary);font-weight:500">INV-2024-087</td><td>FreshMart</td><td style="font-weight:600">₹1,20,000</td><td><span class="badge badge-gray"><i class="ti ti-building-bank" style="font-size:11px"></i> RTGS</span></td><td>Dec 10, 2024</td><td><span class="badge badge-green badge-dot">Received</span></td></tr>
+          <tr><td style="color:var(--primary);font-weight:500">INV-2024-086</td><td>Ola Organics</td><td style="font-weight:600">₹32,500</td><td><span class="badge badge-gray"><i class="ti ti-qrcode" style="font-size:11px"></i> UPI</span></td><td>Dec 8, 2024</td><td><span class="badge badge-orange badge-dot">Partial</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

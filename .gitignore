@@ -1,0 +1,13 @@
+/vendor/
+.env
+composer.phar
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+/storage/backups/*
+!/storage/backups/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/public/uploads/signatures/*
+!/public/uploads/signatures/.gitkeep
+/public/uploads/company/*
+!/public/uploads/company/.gitkeep

@@ -1,0 +1,30 @@
+<!-- pages/expenses.html -->
+<div id="page-expenses" class="page">
+  <div class="section-header" style="margin-bottom:20px">
+    <div style="display:flex;gap:8px;align-items:center">
+      <select class="form-control" style="width:120px;padding:7px 11px"><option>December</option><option>November</option></select>
+      <select class="form-control" style="width:130px;padding:7px 11px"><option>All Categories</option><option>Salary</option><option>Software</option><option>Rent</option></select>
+    </div>
+    <button class="btn btn-primary" onclick="openModal('expenseModal')"><i class="ti ti-plus"></i> Add Expense</button>
+  </div>
+  <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+    <div class="stat-card"><div class="stat-label">Total Expenses</div><div class="stat-value" style="font-size:22px">₹1,42,500</div></div>
+    <div class="stat-card"><div class="stat-label">Salary &amp; Payroll</div><div class="stat-value" style="font-size:22px">₹78,000</div></div>
+    <div class="stat-card"><div class="stat-label">Office &amp; Utilities</div><div class="stat-value" style="font-size:22px">₹28,500</div></div>
+    <div class="stat-card"><div class="stat-label">Software &amp; Tools</div><div class="stat-value" style="font-size:22px">₹18,000</div></div>
+  </div>
+  <div class="table-card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th><th>Paid Via</th><th>Receipt</th></tr></thead>
+        <tbody>
+          <tr><td>Dec 1</td><td><span class="badge badge-purple">Salary</span></td><td>Employee salaries — December</td><td style="font-weight:600">₹78,000</td><td>Bank Transfer</td><td><button class="btn btn-ghost btn-sm"><i class="ti ti-file"></i></button></td></tr>
+          <tr><td>Dec 2</td><td><span class="badge badge-blue">Rent</span></td><td>Office rent — Dec 2024</td><td style="font-weight:600">₹18,000</td><td>UPI</td><td><button class="btn btn-ghost btn-sm"><i class="ti ti-file"></i></button></td></tr>
+          <tr><td>Dec 5</td><td><span class="badge badge-orange">Software</span></td><td>Adobe CC · Figma Pro · Slack</td><td style="font-weight:600">₹12,400</td><td>Credit Card</td><td><button class="btn btn-ghost btn-sm"><i class="ti ti-file"></i></button></td></tr>
+          <tr><td>Dec 8</td><td><span class="badge badge-gray">Internet</span></td><td>Broadband + Mobile data</td><td style="font-weight:600">₹4,500</td><td>Auto-debit</td><td><button class="btn btn-ghost btn-sm"><i class="ti ti-file"></i></button></td></tr>
+          <tr><td>Dec 10</td><td><span class="badge badge-green">Equipment</span></td><td>Camera lens rental — product shoot</td><td style="font-weight:600">₹8,200</td><td>Cash</td><td><button class="btn btn-ghost btn-sm"><i class="ti ti-file"></i></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

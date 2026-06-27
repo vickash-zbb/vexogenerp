@@ -1,0 +1,131 @@
+<!-- pages/modals.html -->
+<!-- All Modal Dialogs -->
+
+<!-- Client Modal -->
+<div class="modal-overlay" id="clientModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add New Client</div><button class="icon-btn" onclick="closeModal('clientModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Company Name *</label><input class="form-control" placeholder="Acme Corp Pvt Ltd"></div>
+        <div class="form-group"><label class="form-label">Industry</label><select class="form-control"><option>Select industry</option><option>FMCG</option><option>E-Commerce</option><option>Media</option><option>Technology</option><option>Real Estate</option></select></div>
+        <div class="form-group"><label class="form-label">Contact Person</label><input class="form-control" placeholder="Full name"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-control" placeholder="+91 98400 00000"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-control" placeholder="contact@company.com"></div>
+        <div class="form-group"><label class="form-label">Website</label><input class="form-control" placeholder="www.company.com"></div>
+        <div class="form-group"><label class="form-label">GST Number</label><input class="form-control" placeholder="33AABCX0000X1Z0"></div>
+        <div class="form-group"><label class="form-label">Tags</label><input class="form-control" placeholder="vip, retainer…"></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Address</label><textarea class="form-control" rows="2" placeholder="Full address"></textarea></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Notes</label><textarea class="form-control" rows="2" placeholder="Internal notes about this client"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('clientModal')">Cancel</button><button class="btn btn-primary">Save Client</button></div>
+  </div>
+</div>
+
+<!-- Project Modal -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">New Project</div><button class="icon-btn" onclick="closeModal('projectModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Project Name *</label><input class="form-control" placeholder="Brand identity refresh"></div>
+        <div class="form-group"><label class="form-label">Client *</label><select class="form-control"><option>Select client</option><option>Nexus Brands</option><option>Stellar Media</option><option>FreshMart</option></select></div>
+        <div class="form-group"><label class="form-label">Category</label><select class="form-control"><option>Branding</option><option>Web Development</option><option>Packaging</option><option>Photography</option><option>Video Production</option><option>SEO</option><option>Social Media</option></select></div>
+        <div class="form-group"><label class="form-label">Priority</label><select class="form-control"><option>Medium</option><option>High</option><option>Low</option></select></div>
+        <div class="form-group"><label class="form-label">Start Date</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">Expected Delivery</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">Estimated Cost (₹)</label><input class="form-control" placeholder="0.00"></div>
+        <div class="form-group"><label class="form-label">Selling Price (₹)</label><input class="form-control" placeholder="0.00"></div>
+        <div class="form-group"><label class="form-label">Assigned Employee</label><select class="form-control"><option>Rajan Kumar</option><option>Arun Mani</option><option>Priya Suresh</option><option>Vijay Nataraj</option></select></div>
+        <div class="form-group"><label class="form-label">Status</label><select class="form-control"><option>Lead</option><option>Discussion</option><option>Quotation Sent</option><option>Planning</option><option>Design</option></select></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Description</label><textarea class="form-control" rows="3" placeholder="Project scope and requirements"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('projectModal')">Cancel</button><button class="btn btn-primary">Create Project</button></div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Record Payment</div><button class="icon-btn" onclick="closeModal('paymentModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Invoice</label><select class="form-control"><option>INV-2024-089</option><option>INV-2024-088</option><option>INV-2024-087</option></select></div>
+        <div class="form-group"><label class="form-label">Client</label><input class="form-control" placeholder="Auto-filled" readonly></div>
+        <div class="form-group"><label class="form-label">Amount Received (₹) *</label><input class="form-control" placeholder="0.00"></div>
+        <div class="form-group"><label class="form-label">Payment Stage</label><select class="form-control"><option>Advance</option><option>25%</option><option>50%</option><option>75%</option><option>Final Payment</option></select></div>
+        <div class="form-group"><label class="form-label">Payment Method</label><select class="form-control"><option>UPI</option><option>NEFT</option><option>RTGS</option><option>Cash</option><option>Cheque</option></select></div>
+        <div class="form-group"><label class="form-label">Transaction ID</label><input class="form-control" placeholder="UTR / Ref number"></div>
+        <div class="form-group"><label class="form-label">Payment Date</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">GST Included</label><select class="form-control"><option>Yes</option><option>No</option></select></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Notes</label><input class="form-control" placeholder="Optional notes"></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancel</button><button class="btn btn-primary">Record Payment</button></div>
+  </div>
+</div>
+
+<!-- Invoice Modal -->
+<div class="modal-overlay" id="invoiceModal">
+  <div class="modal" style="width:650px">
+    <div class="modal-header"><div class="modal-title">Generate Invoice</div><button class="icon-btn" onclick="closeModal('invoiceModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Client *</label><select class="form-control"><option>Select client</option><option>Nexus Brands</option><option>Stellar Media</option><option>FreshMart</option></select></div>
+        <div class="form-group"><label class="form-label">Project</label><select class="form-control"><option>Select project</option></select></div>
+        <div class="form-group"><label class="form-label">Invoice Date</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">Due Date</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">GST Rate</label><select class="form-control"><option>18%</option><option>12%</option><option>5%</option><option>0%</option></select></div>
+        <div class="form-group"><label class="form-label">Discount (%)</label><input class="form-control" placeholder="0"></div>
+      </div>
+      <div style="margin-top:16px">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px">Line Items</div>
+        <table style="width:100%">
+          <thead><tr><th style="background:var(--bg)">Service</th><th style="background:var(--bg)">Qty</th><th style="background:var(--bg)">Rate (₹)</th><th style="background:var(--bg)">Amount</th></tr></thead>
+          <tbody>
+            <tr><td><input class="form-control" style="border:none;padding:8px 0" placeholder="Service name"></td><td><input class="form-control" style="border:none;padding:8px 0;width:60px" value="1"></td><td><input class="form-control" style="border:none;padding:8px 0;width:100px" placeholder="0.00"></td><td style="font-weight:500">₹0.00</td></tr>
+          </tbody>
+        </table>
+        <button class="btn btn-ghost btn-sm" style="margin-top:8px"><i class="ti ti-plus"></i> Add line item</button>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('invoiceModal')">Cancel</button><button class="btn btn-primary">Generate Invoice</button></div>
+  </div>
+</div>
+
+<!-- Quotation Modal -->
+<div class="modal-overlay" id="quotationModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">New Quotation</div><button class="icon-btn" onclick="closeModal('quotationModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Client *</label><select class="form-control"><option>Select client</option><option>TechVilla</option><option>GreenLeaf</option></select></div>
+        <div class="form-group"><label class="form-label">Valid Until</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">GST Rate</label><select class="form-control"><option>18%</option><option>12%</option></select></div>
+        <div class="form-group"><label class="form-label">Discount</label><input class="form-control" placeholder="0%"></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Terms & Conditions</label><textarea class="form-control" rows="3" placeholder="Payment terms, revision policy…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('quotationModal')">Cancel</button><button class="btn btn-outline"><i class="ti ti-download"></i> Export PDF</button><button class="btn btn-primary">Send to Client</button></div>
+  </div>
+</div>
+
+<!-- Expense Modal -->
+<div class="modal-overlay" id="expenseModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Expense</div><button class="icon-btn" onclick="closeModal('expenseModal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Category</label><select class="form-control"><option>Rent</option><option>Salary</option><option>Internet</option><option>Software</option><option>Equipment</option><option>Photography</option><option>Fuel</option><option>Printing</option><option>Miscellaneous</option></select></div>
+        <div class="form-group"><label class="form-label">Amount (₹)</label><input class="form-control" placeholder="0.00"></div>
+        <div class="form-group"><label class="form-label">Date</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label">Paid Via</label><select class="form-control"><option>Bank Transfer</option><option>UPI</option><option>Cash</option><option>Credit Card</option><option>Auto-debit</option></select></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Description</label><input class="form-control" placeholder="What was this for?"></div>
+        <div class="form-group" style="grid-column:1/-1"><label class="form-label">Receipt</label><input type="file" class="form-control"></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('expenseModal')">Cancel</button><button class="btn btn-primary">Save Expense</button></div>
+  </div>
+</div>

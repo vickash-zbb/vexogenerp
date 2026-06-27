@@ -1,0 +1,51 @@
+<!-- pages/invoices.html -->
+<div id="page-invoices" class="page">
+  <div class="section-header" style="margin-bottom:20px">
+    <div></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-outline"><i class="ti ti-download"></i> Export</button>
+      <button class="btn btn-primary" onclick="openModal('invoiceModal')"><i class="ti ti-plus"></i> New Invoice</button>
+    </div>
+  </div>
+  <div class="invoice-preview" style="margin-bottom:24px">
+    <div class="invoice-header">
+      <div>
+        <div class="invoice-company">Vexogen</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Digital Agency &amp; Creative Studio<br>Salem, Tamil Nadu 636001<br>GST: 33AABCV1234R1Z5</div>
+      </div>
+      <div style="text-align:right">
+        <div class="invoice-tag">INVOICE</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:8px"><strong>#INV-2024-089</strong></div>
+        <div style="font-size:12px;color:var(--text-muted)">Date: Dec 14, 2024<br>Due: Dec 21, 2024</div>
+      </div>
+    </div>
+    <div class="invoice-meta">
+      <div><div class="invoice-section-label">Bill To</div><div style="font-size:14px;font-weight:600">Stellar Media Group</div><div style="font-size:13px;color:var(--text-secondary)">Ananya Mehta<br>Chennai, Tamil Nadu<br>GST: 33AABCS9876P1Z3</div></div>
+      <div><div class="invoice-section-label">Payment Info</div><div style="font-size:13px;color:var(--text-secondary)">Bank: HDFC Bank<br>A/C: 50200123456789<br>IFSC: HDFC0001234</div></div>
+    </div>
+    <table class="invoice-table" style="margin-bottom:0">
+      <thead><tr><th>#</th><th>Service</th><th>Description</th><th style="text-align:right">Qty</th><th style="text-align:right">Rate</th><th style="text-align:right">Amount</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Web Development</td><td>E-commerce website — full build</td><td style="text-align:right">1</td><td style="text-align:right">₹1,40,000</td><td style="text-align:right;font-weight:600">₹1,40,000</td></tr>
+        <tr><td>2</td><td>UI/UX Design</td><td>Wireframes + high-fidelity mockups</td><td style="text-align:right">1</td><td style="text-align:right">₹25,000</td><td style="text-align:right;font-weight:600">₹25,000</td></tr>
+        <tr><td>3</td><td>SEO Setup</td><td>On-page SEO + Google Search Console</td><td style="text-align:right">1</td><td style="text-align:right">₹10,169</td><td style="text-align:right;font-weight:600">₹10,169</td></tr>
+      </tbody>
+    </table>
+    <div class="invoice-totals">
+      <div class="invoice-totals-inner">
+        <div class="inv-row"><span style="color:var(--text-muted)">Subtotal</span><span>₹1,75,169</span></div>
+        <div class="inv-row"><span style="color:var(--text-muted)">GST 18%</span><span>₹31,530</span></div>
+        <div class="inv-row"><span style="color:var(--text-muted)">Discount</span><span style="color:var(--success)">− ₹26,699</span></div>
+        <div class="inv-row total"><span>Total</span><span style="color:var(--primary)">₹1,80,000</span></div>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)">
+      <strong style="color:var(--text-primary)">Terms:</strong> Payment due within 7 days. Late payments attract 2% monthly interest. Thank you for your business.
+    </div>
+    <div style="display:flex;gap:8px;margin-top:16px;justify-content:flex-end">
+      <button class="btn btn-outline btn-sm"><i class="ti ti-download"></i> Download PDF</button>
+      <button class="btn btn-outline btn-sm"><i class="ti ti-mail"></i> Email</button>
+      <button class="btn btn-primary btn-sm"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button>
+    </div>
+  </div>
+</div>
