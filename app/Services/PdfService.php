@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Core\Database;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
 class PdfService
 {
@@ -16,20 +14,26 @@ class PdfService
         ob_start();
         require APP_PATH . '/Views/documents/' . $view . '.php';
         $html = ob_get_clean();
-        if (!extension_loaded('gd')) {
-            $html = (string) preg_replace('/<img\b[^>]*>/i', '', $html);
-        }
 
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $options->set('defaultFont', 'DejaVu Sans');
+        $printInjection = '
+        <div id="print-header-actions" style="background:#f3f4f6; padding:10px 20px; border-bottom:1px solid #d1d5db; text-align:center; font-family:sans-serif; margin-bottom: 20px;">
+            <button onclick="window.print()" style="background:#3b82f6; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-weight:bold; cursor:pointer; font-size:13px; margin-right: 10px;">🖨️ Print / Save as PDF</button>
+            <button onclick="window.close()" style="background:#e5e7eb; color:#374151; border:1px solid #d1d5db; padding:8px 16px; border-radius:6px; cursor:pointer; font-size:13px;">❌ Close Window</button>
+        </div>
+        <style>
+            @media print {
+                #print-header-actions { display: none !important; }
+            }
+        </style>
+        <script>
+            window.onload = function() {
+                window.print();
+            };
+        </script>
+        ';
 
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        $dompdf->stream($filename, ['Attachment' => true]);
+        $html = str_replace('<body>', '<body>' . $printInjection, $html);
+        echo $html;
         exit;
     }
 
