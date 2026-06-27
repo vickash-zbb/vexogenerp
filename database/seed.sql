@@ -5,15 +5,11 @@ INSERT INTO company_settings (company_name, tagline, email, phone, address, city
 ('Vexogen', 'Digital Agency & Creative Studio', 'hello@vexogen.com', '+91 98400 00000', 'Salem, Tamil Nadu 636001, India', 'Salem', 'Tamil Nadu', '636001', '33AABCV1234R1Z5', 'www.vexogen.com', 'HDFC Bank', '50200123456789', 'HDFC0001234', 'Payment due within 7 days. Late payments attract 2% monthly interest.', 'Quotation valid for 15 days from issue date.');
 
 INSERT INTO users (name, email, password, role, avatar, phone) VALUES
-('Admin User', 'admin@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'admin', 'AK', '+91 98400 00001'),
-('Sowmya Krishnan', 'accounts@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'accounts', 'SK', '+91 98400 00002'),
-('Rajan Kumar', 'rajan@vexogen.com', '$2y$10$OHea/C3iimsQDC0dlku9s.a7tngJgE8Il.sKs3Q6eDJACZ0iNfNNq', 'designer', 'RK', '+91 98400 00003');
+('Admin User', 'admin@vexogen.in', '$2y$10$5cvH4Dmck1Bi32w6tHOe7uRD.rHar/EPfGacw8J3Symfu68JmwH0i', 'admin', 'AK', '+91 98400 00001'),
+('Sowmya Krishnan', 'accounts@vexogen.com', '$2y$10$5cvH4Dmck1Bi32w6tHOe7uRD.rHar/EPfGacw8J3Symfu68JmwH0i', 'accounts', 'SK', '+91 98400 00002'),
+('Rajan Kumar', 'rajan@vexogen.com', '$2y$10$5cvH4Dmck1Bi32w6tHOe7uRD.rHar/EPfGacw8J3Symfu68JmwH0i', 'designer', 'RK', '+91 98400 00003');
 
 -- password for seeded users: admin123
-
-INSERT INTO employees (user_id, employee_code, name, email, phone, designation, department, skills, salary, join_date, status) VALUES
-(3, 'EMP-001', 'Rajan Kumar', 'rajan@vexogen.com', '+91 98400 00003', 'Senior Designer', 'Creative', '["Branding","Packaging"]', 45000, '2022-04-01', 'active'),
-(NULL, 'EMP-002', 'Arun Mani', 'arun@vexogen.com', '+91 98400 00004', 'Full Stack Developer', 'Technology', '["Web Dev","UI/UX"]', 55000, '2021-08-15', 'active'),
 (NULL, 'EMP-003', 'Priya Suresh', 'priya@vexogen.com', '+91 98400 00005', 'Digital Marketing Lead', 'Marketing', '["SEO","Social Media"]', 42000, '2023-01-10', 'active'),
 (NULL, 'EMP-004', 'Vijay Nataraj', 'vijay@vexogen.com', '+91 98400 00006', 'Photographer & Videographer', 'Production', '["Photography","Video"]', 38000, '2022-11-20', 'active'),
 (2, 'EMP-005', 'Sowmya Krishnan', 'accounts@vexogen.com', '+91 98400 00002', 'Accounts Manager', 'Finance', '["Finance","GST"]', 40000, '2020-06-01', 'active');
