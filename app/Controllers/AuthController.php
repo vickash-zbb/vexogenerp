@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function loginForm(): void
     {
         if (Auth::check()) {
-            redirect('');
+            redirect('dashboard');
         }
         $this->view('auth/login', ['title' => 'Sign In'], null);
     }
@@ -24,7 +24,7 @@ class AuthController extends Controller
         $email = trim((string) $this->input('email'));
         $password = (string) $this->input('password');
         if (Auth::attempt($email, $password)) {
-            redirect('');
+            redirect('dashboard');
         }
         $_SESSION['_old'] = ['email' => $email];
         flash('error', 'Invalid email or password.');

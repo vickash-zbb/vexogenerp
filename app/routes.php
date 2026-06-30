@@ -12,6 +12,7 @@ use App\Controllers\EmployeeController;
 use App\Controllers\ExpenseController;
 use App\Controllers\FileController;
 use App\Controllers\InvoiceController;
+use App\Controllers\LandingController;
 use App\Controllers\PaymentController;
 use App\Controllers\ProjectController;
 use App\Controllers\QuotationController;
@@ -23,12 +24,13 @@ use App\Core\Router;
 $router = new Router();
 
 // Public
+$router->get('/', [LandingController::class, 'index'], 'public');
 $router->get('/login', [AuthController::class, 'loginForm'], 'public');
 $router->post('/login', [AuthController::class, 'login'], 'public');
 $router->get('/logout', [AuthController::class, 'logout'], 'public');
 
 // Protected pages
-$router->get('/', [DashboardController::class, 'index'], null);
+$router->get('/dashboard', [DashboardController::class, 'index'], null);
 $router->get('/clients', [ClientController::class, 'index'], 'clients');
 $router->get('/clients/{id}', [ClientController::class, 'show'], 'clients');
 $router->get('/projects', [ProjectController::class, 'index'], 'projects');
