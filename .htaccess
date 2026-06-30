@@ -7,6 +7,10 @@ RewriteRule ^(\.env|composer\.(json|lock)|composer\.phar|README\.md)$ - [F,L]
 # Allow one-time setup scripts at project root.
 RewriteRule ^(install|backup)\.php$ - [L]
 
+# Setup diagnostics when the document root is the project root.
+RewriteCond %{REQUEST_URI} !/public/
+RewriteRule ^(server-check|ping)\.php$ public/$1.php [L]
+
 # Serve real public assets when the document root is the project root.
 RewriteCond %{REQUEST_URI} !/public/
 RewriteRule ^(.+\.(?:css|js|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|map))$ public/$1 [L]

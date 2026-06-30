@@ -2,6 +2,34 @@
 
 declare(strict_types=1);
 
+if (!function_exists('load_composer')) {
+    function load_composer(): bool
+    {
+        static $loaded = false;
+        static $available = false;
+
+        if ($loaded) {
+            return $available;
+        }
+
+        $loaded = true;
+        $autoload = BASE_PATH . '/vendor/autoload.php';
+        if (!is_file($autoload)) {
+            return false;
+        }
+
+        try {
+            require_once $autoload;
+            $available = true;
+        } catch (Throwable $e) {
+            error_log('Composer autoload failed: ' . $e->getMessage());
+            $available = false;
+        }
+
+        return $available;
+    }
+}
+
 if (!function_exists('env')) {
     function env(string $key, mixed $default = null): mixed
     {

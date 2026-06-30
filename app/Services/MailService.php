@@ -12,6 +12,11 @@ class MailService
 {
     public static function send(string $to, string $subject, string $body, ?string $attachmentPath = null, ?string $attachmentName = null): bool
     {
+        if (!load_composer()) {
+            error_log('Mail error: Composer vendor folder is missing. Run composer install and upload vendor/.');
+            return false;
+        }
+
         $settings = Database::fetch('SELECT * FROM company_settings LIMIT 1') ?: [];
         $mailConfig = require CONFIG_PATH . '/mail.php';
 

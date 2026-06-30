@@ -2,6 +2,21 @@
 
 declare(strict_types=1);
 
+register_shutdown_function(static function (): void {
+    $error = error_get_last();
+    if (!$error || !in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        return;
+    }
+    if (!headers_sent()) {
+        http_response_code(500);
+        header('Content-Type: text/html; charset=utf-8');
+    }
+    echo '<h1>Application startup failed</h1>';
+    echo '<p>' . htmlspecialchars($error['message']) . '</p>';
+    echo '<p><code>' . htmlspecialchars($error['file']) . ':' . $error['line'] . '</code></p>';
+    echo '<p>If this mentions <code>vendor/</code>, delete the broken <code>vendor</code> folder on the server or upload a complete one from <code>composer install</code>.</p>';
+});
+
 if (version_compare(PHP_VERSION, '8.0.0', '<')) {
     http_response_code(500);
     header('Content-Type: text/html; charset=utf-8');
@@ -10,11 +25,11 @@ if (version_compare(PHP_VERSION, '8.0.0', '<')) {
     exit;
 }
 
-define('BASE_PATH', dirname(__DIR__));
+define('BASE_PATH', defined('VEXOGEN_BASE_PATH') ? VEXOGEN_BASE_PATH : dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 define('CONFIG_PATH', BASE_PATH . '/config');
 define('STORAGE_PATH', BASE_PATH . '/storage');
-define('PUBLIC_PATH', BASE_PATH . '/public');
+define('PUBLIC_PATH', defined('VEXOGEN_PUBLIC_PATH') ? VEXOGEN_PUBLIC_PATH : BASE_PATH . '/public');
 
 date_default_timezone_set('Asia/Kolkata');
 
@@ -49,10 +64,6 @@ if (is_file($envFile) && is_readable($envFile)) {
             $_SERVER[$key] = $value;
         }
     }
-}
-
-if (is_file(BASE_PATH . '/vendor/autoload.php')) {
-    require_once BASE_PATH . '/vendor/autoload.php';
 }
 
 spl_autoload_register(function (string $class): void {

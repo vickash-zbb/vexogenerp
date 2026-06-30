@@ -126,6 +126,10 @@ class DocumentController extends Controller
 
     private function generateTempPdf(string $view, array $data, string $basename): string
     {
+        if (!load_composer()) {
+            throw new \RuntimeException('PDF library unavailable. Upload a complete vendor/ folder from composer install.');
+        }
+
         extract($data, EXTR_SKIP);
         ob_start();
         require APP_PATH . '/Views/documents/' . $view . '.php';
