@@ -12,7 +12,7 @@ class BackupService
 {
     public static function create(): array
     {
-        $cfg = require CONFIG_PATH . '/database.php';
+        $cfg = Database::config();
         $dir = STORAGE_PATH . '/backups';
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);

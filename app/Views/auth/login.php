@@ -35,15 +35,15 @@
       <?= \App\Core\CSRF::field() ?>
       <div class="form-group" style="margin-bottom:14px">
         <label class="form-label">Email</label>
-        <input class="form-control" type="email" name="email" value="<?= old('email') ?>" required autofocus>
+        <input class="form-control" type="email" name="email" value="<?= old('email', 'admin@vexogen.in') ?>" required autofocus>
       </div>
       <div class="form-group" style="margin-bottom:20px">
         <label class="form-label">Password</label>
-        <input class="form-control" type="password" name="password" required>
+        <input class="form-control" type="password" name="password" value="admin123" required>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:11px">Sign In</button>
     </form>
-    <p style="margin-top:20px;font-size:12px;color:var(--text-muted);text-align:center">Default: admin@vexogen.com / admin123</p>
+    <p style="margin-top:20px;font-size:12px;color:var(--text-muted);text-align:center">Default: admin@vexogen.in / admin123</p>
   </div>
 </div>
 </body>

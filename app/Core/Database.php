@@ -14,7 +14,7 @@ class Database
     public static function connection(): PDO
     {
         if (self::$pdo === null) {
-            $cfg = require CONFIG_PATH . '/database.php';
+            $cfg = self::config();
             $dsn = sprintf(
                 'mysql:host=%s;port=%s;dbname=%s;charset=%s',
                 $cfg['host'],
@@ -33,6 +33,37 @@ class Database
             }
         }
         return self::$pdo;
+    }
+
+    public static function config(): array
+    {
+        $configFile = CONFIG_PATH . '/database.php';
+        if (is_file($configFile)) {
+            return require $configFile;
+        }
+
+        $host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+        $host = explode(':', $host)[0];
+
+        if ($host === 'erp.vexogen.in') {
+            return [
+                'host'     => 'localhost',
+                'port'     => '3306',
+                'database' => 'u899224075_erpvexogen',
+                'username' => 'u899224075_erpvexogen',
+                'password' => env('LIVE_DB_PASS', env('DB_PASS', '')),
+                'charset'  => 'utf8mb4',
+            ];
+        }
+
+        return [
+            'host'     => 'localhost',
+            'port'     => '3306',
+            'database' => 'vexogen_crm',
+            'username' => 'root',
+            'password' => '',
+            'charset'  => 'utf8mb4',
+        ];
     }
 
     public static function query(string $sql, array $params = []): \PDOStatement

@@ -3,12 +3,6 @@ RewriteBase /
 
 RewriteRule (^|/)\. - [F,L]
 
-# One-time installer when document root is the public folder.
-RewriteRule ^install\.php$ - [L]
-
-# Setup diagnostics when document root is the public folder.
-RewriteRule ^(server-check|ping)\.php$ - [L]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

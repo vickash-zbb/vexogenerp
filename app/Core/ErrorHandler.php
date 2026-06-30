@@ -80,7 +80,7 @@ class ErrorHandler
         if (self::isApiRequest()) {
             json_response([
                 'success' => false,
-                'message' => $isDb ? 'Database connection failed. Check .env settings.' : 'Server error.',
+                'message' => $isDb ? 'Database connection failed. Check LIVE_DB_PASS.' : 'Server error.',
             ], 500);
         }
 

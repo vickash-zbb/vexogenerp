@@ -2,14 +2,10 @@ RewriteEngine On
 
 # Block direct access to private application files on shared hosting.
 RewriteRule ^(\.git|\.agents|\.codex|app|config|database|storage|vendor|vexogen-erp)(/|$) - [F,L]
-RewriteRule ^(\.env|composer\.(json|lock)|composer\.phar|README\.md)$ - [F,L]
+RewriteRule ^(\.env|composer\.(json|lock)|README\.md)$ - [F,L]
 
-# Allow one-time setup scripts at project root.
-RewriteRule ^(install|backup)\.php$ - [L]
-
-# Setup diagnostics when the document root is the project root.
-RewriteCond %{REQUEST_URI} !/public/
-RewriteRule ^(server-check|ping)\.php$ public/$1.php [L]
+# Allow the backup endpoint at project root.
+RewriteRule ^backup\.php$ - [L]
 
 # Serve real public assets when the document root is the project root.
 RewriteCond %{REQUEST_URI} !/public/

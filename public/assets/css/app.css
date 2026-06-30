@@ -32,6 +32,59 @@
   button { cursor: pointer; font-family: inherit; }
   input, select, textarea { font-family: inherit; }
 
+  /* Local icon fallback. Tabler CDN overrides these when it loads. */
+  .ti { display: inline-flex; align-items: center; justify-content: center; width: 1em; height: 1em; line-height: 1; font-style: normal; font-family: "Segoe UI Symbol", "Noto Sans Symbols", Arial, sans-serif; }
+  .ti::before { content: "\25A1"; }
+  .ti-activity-heartbeat::before { content: "\2665"; }
+  .ti-alert-triangle::before { content: "\26A0"; }
+  .ti-arrow-left::before { content: "\2190"; }
+  .ti-bell::before { content: "\25CE"; }
+  .ti-brand-whatsapp::before { content: "\260E"; }
+  .ti-briefcase::before { content: "\25A3"; }
+  .ti-brush::before { content: "\25E9"; }
+  .ti-building-store::before { content: "\25A6"; }
+  .ti-calendar::before, .ti-calendar-dollar::before, .ti-calendar-due::before { content: "\25A4"; }
+  .ti-cash::before, .ti-cash-banknote::before, .ti-coin::before { content: "\20B9"; }
+  .ti-category::before { content: "\25A6"; }
+  .ti-chart-bar::before, .ti-trending-up::before { content: "\25A5"; }
+  .ti-check::before, .ti-checklist::before, .ti-circle-check::before { content: "\2713"; }
+  .ti-chevron-down::before { content: "\2304"; }
+  .ti-chevron-left::before { content: "\2039"; }
+  .ti-chevron-right::before { content: "\203A"; }
+  .ti-chevrons-left::before { content: "\00AB"; }
+  .ti-clipboard-text::before { content: "\25A4"; }
+  .ti-clock-dollar::before, .ti-hourglass-high::before { content: "\25D4"; }
+  .ti-credit-card::before { content: "\25AD"; }
+  .ti-database::before { content: "\25C9"; }
+  .ti-download::before { content: "\2193"; }
+  .ti-edit::before { content: "\270E"; }
+  .ti-eye::before { content: "\25C9"; }
+  .ti-file::before, .ti-file-invoice::before, .ti-file-plus::before, .ti-file-text::before, .ti-file-type-pdf::before { content: "\25A7"; }
+  .ti-file-zip::before { content: "\25A8"; }
+  .ti-filter::before { content: "\25BD"; }
+  .ti-flag-2::before { content: "\2691"; }
+  .ti-folder::before, .ti-folder-open::before { content: "\25B0"; }
+  .ti-key::before { content: "\26BF"; }
+  .ti-layout-dashboard::before { content: "\25A6"; }
+  .ti-link-off::before { content: "\26AD"; }
+  .ti-logout::before { content: "\2192"; }
+  .ti-mail::before, .ti-mail-forward::before { content: "\2709"; }
+  .ti-map-pin::before { content: "\25C9"; }
+  .ti-menu-2::before { content: "\2630"; }
+  .ti-phone::before, .ti-phone-call::before { content: "\260E"; }
+  .ti-photo::before { content: "\25A7"; }
+  .ti-plus::before { content: "\002B"; }
+  .ti-receipt::before, .ti-receipt-2::before, .ti-receipt-tax::before { content: "\25A4"; }
+  .ti-rotate-clockwise::before { content: "\21BB"; }
+  .ti-search::before { content: "\2315"; }
+  .ti-settings::before { content: "\2699"; }
+  .ti-trash::before { content: "\2715"; }
+  .ti-upload::before { content: "\2191"; }
+  .ti-user::before, .ti-users::before { content: "\25CF"; }
+  .ti-vector::before, .ti-vector-triangle::before { content: "\25B3"; }
+  .ti-video::before { content: "\25B6"; }
+  .ti-x::before { content: "\00D7"; }
+
   /* Layout */
   .app { display: flex; height: 100vh; overflow: hidden; }
   .sidebar { width: var(--sidebar-w); background: var(--secondary); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: width .2s ease, transform .2s ease; }

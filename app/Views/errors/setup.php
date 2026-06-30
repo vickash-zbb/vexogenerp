@@ -18,13 +18,9 @@
 <body>
 <div class="box">
   <h1>Database connection failed</h1>
-  <p>Vexogen ERP cannot connect to MySQL. Update your <code>.env</code> file on the server:</p>
-  <pre style="background:#F8FAFC;padding:14px;border-radius:8px;font-size:12px;line-height:1.5;margin:16px 0">APP_URL=https://erp.vexogen.in
-DB_HOST=localhost
-DB_NAME=your_hostinger_db_name
-DB_USER=your_hostinger_db_user
-DB_PASS=your_hostinger_db_password</pre>
-  <p>Then import the database via phpMyAdmin or open <a href="<?= htmlspecialchars(detect_app_url() . '/install.php') ?>">install.php</a> once.</p>
+  <p>Vexogen ERP cannot connect to MySQL. On Hostinger, set only your MySQL database password in <code>.env</code>:</p>
+  <pre style="background:#F8FAFC;padding:14px;border-radius:8px;font-size:12px;line-height:1.5;margin:16px 0">LIVE_DB_PASS=your_hostinger_mysql_password</pre>
+  <p>After changing the password, refresh this page. If this is a fresh database, import <code>database/hostinger_setup.sql</code> once in phpMyAdmin.</p>
   <?php if (!empty($hint)): ?>
   <div class="error"><?= htmlspecialchars($hint) ?></div>
   <?php endif; ?>

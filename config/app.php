@@ -1,9 +1,12 @@
 <?php
 
+$host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+$host = explode(':', $host)[0];
+
 return [
     'name'       => 'Vexogen',
     'tagline'    => 'Agency ERP',
-    'url'        => env('APP_URL', ''),
+    'url'        => $host === 'erp.vexogen.in' ? 'https://erp.vexogen.in' : '',
     'timezone'   => 'Asia/Kolkata',
     'currency'   => 'INR',
     'currency_symbol' => '₹',

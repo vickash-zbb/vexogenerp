@@ -22,9 +22,9 @@
   <p>The application hit a server error. Common fixes on Hostinger:</p>
   <ul>
     <li>Set PHP to <strong>8.0+</strong> in hPanel → Advanced → PHP Configuration</li>
-    <li>Create <code>.env</code> with <code>APP_URL</code> and database credentials</li>
-    <li>Upload the full project (<code>app/</code>, <code>config/</code>, <code>public/</code>, <code>vendor/</code>)</li>
-    <li>Import <code>database/schema.sql</code> or run <a href="<?= htmlspecialchars(detect_app_url() . '/install.php') ?>">install.php</a></li>
+    <li>Set <code>LIVE_DB_PASS</code> in <code>.env</code> on Hostinger</li>
+    <li>Upload the full project folders: <code>app/</code>, <code>config/</code>, <code>public/</code>, <code>vendor/</code></li>
+    <li>For fresh setup, import only <code>database/hostinger_setup.sql</code> in phpMyAdmin</li>
   </ul>
   <p>Details are logged in <code>storage/logs/php-errors.log</code> on your server.</p>
   <?php if (!empty($errorMessage)): ?>

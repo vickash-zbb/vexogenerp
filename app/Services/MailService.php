@@ -18,7 +18,7 @@ class MailService
         }
 
         $settings = Database::fetch('SELECT * FROM company_settings LIMIT 1') ?: [];
-        $mailConfig = require CONFIG_PATH . '/mail.php';
+        $mailConfig = self::config();
 
         $mail = new PHPMailer(true);
         try {
@@ -53,6 +53,25 @@ class MailService
             error_log('Mail error: ' . $e->getMessage());
             return false;
         }
+    }
+
+    private static function config(): array
+    {
+        $configFile = CONFIG_PATH . '/mail.php';
+        if (is_file($configFile)) {
+            return require $configFile;
+        }
+
+        return [
+            'driver' => 'smtp',
+            'host' => 'smtp.hostinger.com',
+            'port' => 465,
+            'username' => 'hello@vexogen.in',
+            'password' => env('MAIL_PASSWORD', ''),
+            'encryption' => 'ssl',
+            'from_email' => 'hello@vexogen.in',
+            'from_name' => 'Vexogen',
+        ];
     }
 
     public static function invoiceEmailBody(array $invoice, array $settings): string
